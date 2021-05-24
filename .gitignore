@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# shitfiles
+*.idea
+*/x64
