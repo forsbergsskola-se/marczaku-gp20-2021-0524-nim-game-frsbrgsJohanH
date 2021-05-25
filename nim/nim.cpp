@@ -4,6 +4,7 @@ using namespace std;
 
 int matches = 24;
 
+
 int playerOne(int remainingMatches)
 {
     remainingMatches = matches;
@@ -13,10 +14,21 @@ int playerOne(int remainingMatches)
     int input;
     cin >> input;
 
-    matches -= input;
-    
+    if(!cin || input > 3 || input < 1)
+    {
+        cout << "You can only take 1, 2 or 3 matches." << endl;
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    return matches;
+        
+    }
+    else
+    {
+        matches -= input;
+        return matches;
+    }
+
+    
 }
 
 int playerTwo(int remainingMatches)
@@ -26,22 +38,26 @@ int playerTwo(int remainingMatches)
     cout << "There is " << + remainingMatches << " matches left!" << endl;
     cout << "Player 2. Take 1, 2 or 3 Matches." << endl;
     int input;
+
     cin >> input;
 
-    matches -= input;
-    
+    if(!cin || input > 3 || input < 1)
+    {
+        cout << "You can only take 1, 2 or 3 matches." << endl;
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    else
+    {
+        matches -= input;
+        return matches;
+    }
 
-    return matches;
 }
 
 
 int main(int argc, char* argv[])
 {
-    
-
-    
-
-    
     bool gameRunning = true;
     
     cout << "Welcome to the NIM-Game" << endl;
