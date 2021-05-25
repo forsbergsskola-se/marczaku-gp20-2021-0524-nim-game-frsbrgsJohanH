@@ -1,44 +1,60 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
+int matches = 24;
 
+int playerOne(int remainingMatches)
+{
+    remainingMatches = matches;
+    
+    cout << "There is " << + remainingMatches << " matches left!" << endl;
+    cout << "Player 1. Take 1, 2 or 3 Matches." << endl;
+    int input;
+    cin >> input;
 
+    matches -= input;
+    
+
+    return matches;
+}
+
+int playerTwo(int remainingMatches)
+{
+    remainingMatches = matches;
+    
+    cout << "There is " << + remainingMatches << " matches left!" << endl;
+    cout << "Player 2. Take 1, 2 or 3 Matches." << endl;
+    int input;
+    cin >> input;
+
+    matches -= input;
+    
+
+    return matches;
+}
 
 
 int main(int argc, char* argv[])
 {
-   int matches = 24;
+    
+
+    
+
+    
     bool gameRunning = true;
     
     cout << "Welcome to the NIM-Game" << endl;
 
     while(gameRunning == true)
+        
     {
-        cout << "Take matches. 1, 2 or 3." << endl;
-        int input{};
-        cin >> input;
+        playerOne(matches);
 
-        if(input > 3 || input < 1)
-        {
-            cout << "You can only take 1, 2 or 3 matches." << endl;
-        }
-
-        if (matches != 0)
-        {
-             
-            cout << int (matches -= input);
-           
-            gameRunning = true;
-        }
-        else if(matches <= 0)
-        {
-            gameRunning = false;
-        }
+        playerTwo(matches);
+        
     }
-    
-
-        cout << "Thank you for playing." << endl;
+    cout << "Thank you for playing." << endl;
    return 0;
 }
 
