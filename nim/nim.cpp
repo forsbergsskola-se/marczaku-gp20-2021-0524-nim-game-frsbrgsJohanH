@@ -90,9 +90,20 @@ int main(int argc, char* argv[])
         
     {
         playerOne(matches);
-        CheckWin();
+        if(matches <= 0)
+        {
+            cout << "Player 1 Lost! Thank you for playing." << endl;
+            return 0;
+        }
+            
         playerTwo(matches);
-        CheckWin();
+        if(matches <= 0)
+        {
+            cout << "Player 2 Lost! Thank you for playing." << endl;
+            return 0;
+        }
+            
+        
         
     }
     cout << "Thank you for playing." << endl;
