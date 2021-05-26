@@ -3,19 +3,36 @@
 using namespace std;
 
 int matches = 24;
+bool gameRunning = true;
 
+
+bool CheckWin()
+{
+    if(matches < 1)
+    {
+        return gameRunning = false;
+    }
+}
+
+void DisplayMatches()
+{
+    char match = (char)124;
+
+    for(int i = 0; i < matches; i++)
+    {
+        cout << match;
+    }
+}
 
 int playerOne(int remainingMatches)
 {
-    
     remainingMatches = matches;
-    
-    
-        
-        while(true)
+
+    while(true)
         {
             cout << "There is " << + remainingMatches << " matches left!" << endl;
-            cout << "Player 1. Take 1, 2 or 3 Matches." << endl;
+            DisplayMatches();
+            cout << "\nPlayer 1. Take 1, 2 or 3 Matches." << endl;
             int input;
             cin >> input;
 
@@ -23,7 +40,7 @@ int playerOne(int remainingMatches)
             {
                 cout << "You can only take 1, 2 or 3 matches." << endl;
                 cin.clear();
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             }
             else
@@ -33,11 +50,7 @@ int playerOne(int remainingMatches)
             }
          
         }
-       
-        
-    
-  
-}
+    }
 
 int playerTwo(int remainingMatches)
 {
@@ -47,7 +60,8 @@ int playerTwo(int remainingMatches)
     while(true)
     {
         cout << "There is " << + remainingMatches << " matches left!" << endl;
-        cout << "Player 1. Take 1, 2 or 3 Matches." << endl;
+        DisplayMatches();
+        cout << "\nPlayer 2. Take 1, 2 or 3 Matches." << endl;
         int input;
         cin >> input;
 
@@ -56,30 +70,29 @@ int playerTwo(int remainingMatches)
             cout << "You can only take 1, 2 or 3 matches." << endl;
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            
         }
         else
         {
             matches -= input;
             return matches;
         }
-         
     }
-       
 }
 
 int main(int argc, char* argv[])
 {
-    bool gameRunning = true;
+    
     
     cout << "Welcome to the NIM-Game" << endl;
 
     while(gameRunning == true)
+      
         
     {
         playerOne(matches);
-
+        CheckWin();
         playerTwo(matches);
+        CheckWin();
         
     }
     cout << "Thank you for playing." << endl;
