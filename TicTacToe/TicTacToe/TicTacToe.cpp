@@ -5,7 +5,11 @@ using namespace std;
 
 
 char board[3][3] {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
-int roofChar = 238;
+
+char currentMarker;
+int currentPlayer;
+
+
 
 void DisplayBoard()
 {
@@ -34,15 +38,51 @@ void PlaceMarker(int slot)
         }
         
 
-    cout << row << column;
+    board[row][column] = currentMarker;
        
+}
+
+int CheckWinner()
+{
+    for(int i = 0; i < 3; i++)
+    {
+        //check if row filled;
+
+        if(board[i][0] == board[i][1] && board[i][1] == board[i][2])
+        {
+            return currentPlayer;
+        }
+          //check columns
+        if(board[0][i] == board[1][i] && board[1][i] == board[2][i])
+        {
+            return currentPlayer;
+        }
+            //check diagonals
+            if(board[0][0] == board[1][1] && board[1][1] == board[2][2])
+            {
+                return currentPlayer;
+             }
+
+            if(board[0][2] == board[1][1] && board[1][1] == board[2][0])
+            {
+                return currentPlayer;
+            }
+        // returns the winner
+        
+        return 0;
+        
+    }
 }
 
 
 int main(int argc, char* argv[])
 {
-     
+    currentMarker = 'X';
     PlaceMarker(6);
+    DisplayBoard();
+    PlaceMarker(5);
+    PlaceMarker(4);
+    DisplayBoard();
     
    
 
