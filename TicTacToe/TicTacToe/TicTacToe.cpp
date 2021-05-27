@@ -18,21 +18,38 @@ void DisplayBoard()
     
 }
 
+void PlaceMarker(int slot)
+{
+    int row = slot / 3;
+    int column;
+
+    if(slot % 3 == 0)
+    {
+        row = (slot / 3) - 1;
+        column = 2;
+    }
+        else
+        {
+            column = (slot % 3) - 1;
+        }
+        
+
+    cout << row << column;
+       
+}
+
 
 int main(int argc, char* argv[])
 {
      
-    DisplayBoard();
+    PlaceMarker(6);
     
-  
+   
 
     return 0;
     
 
-    
-    
+ 
 }
 
-//  for(int i = 0; i <= 255; i++) {
-//fprintf(stdout, "[%d]: %c\n", i, i);
-  //  }
+
