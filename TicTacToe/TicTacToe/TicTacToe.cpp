@@ -155,11 +155,7 @@ void GamePlay()
 int main(int argc, char* argv[])
 {
 
-    cout << "Welcome to Tic Tac Toe game" << endl;
-    
-
-    int choice;
-    cin >> choice;
+  
 
     GamePlay();
     
