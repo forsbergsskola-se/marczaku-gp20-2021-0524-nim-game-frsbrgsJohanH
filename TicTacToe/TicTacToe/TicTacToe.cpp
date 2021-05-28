@@ -74,15 +74,33 @@ int CheckWinner()
     }
 }
 
+void GamePlay()
+{
+    char playerMarker;
+    
+    cout << "Player 1. Choose your Marker: X or O :) : ";
+    currentPlayer = 1;
+    cin >> playerMarker;
+    currentMarker = playerMarker;
+
+    for (int i = 0; i < 9; i++)
+    {
+        DisplayBoard();
+        cout <<  "It Is player " << currentPlayer <<"s turn. Enter a slot: ";
+        int slot;
+        cin >> slot;
+
+        PlaceMarker(slot);
+
+        
+    }
+}
+
 
 int main(int argc, char* argv[])
 {
-    currentMarker = 'X';
-    PlaceMarker(6);
-    DisplayBoard();
-    PlaceMarker(5);
-    PlaceMarker(4);
-    DisplayBoard();
+
+    GamePlay();
     
    
 
