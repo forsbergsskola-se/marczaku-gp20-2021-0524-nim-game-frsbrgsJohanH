@@ -10,6 +10,7 @@ char board[3][3] {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 
 char currentMarker;
 int currentPlayer;
+int slot;
 
 
 
@@ -153,13 +154,7 @@ void GamePlay()
             
     }
 
-int aiPlayer()
-{
-    int computerChoice = rand() % 9 + 1;
-        cout << computerChoice << " ";
 
-    return computerChoice;
-}
 
 
 void GamePlayAI()
@@ -171,14 +166,20 @@ void GamePlayAI()
     currentPlayer = 1;
     cin >> playerMarker;
     currentMarker = playerMarker;
+    
 
     DisplayBoard();
 
     for (int i = 0; i < 9; i++)
     {
         cout <<  "It Is player " << currentPlayer <<"s turn. Enter a slot: ";
-        int slot;
+        
         cin >> slot;
+        if(currentPlayer == 2)
+        {
+           slot = rand() % 9 + 1;
+        }
+        
 
         if(slot < 1 || slot > 9)
         {
@@ -223,16 +224,30 @@ void GamePlayAI()
 
 int main(int argc, char* argv[])
 {
+    cout << "Welcome to Tic Tac Toe game" << endl;
+    cout << "Press 1 for 2 players" << endl;
+    cout << "Press 2 for playing against Computer" << endl;
 
-    
-    for(int i = 0; i < 100; i++)
+    int choice;
+    cin >> choice;
+
+    switch(choice)
     {
-        aiPlayer();
-    }
-     
-        
+    case 1:
+        {
+            GamePlay();
+
+            break;
+        }
     
-   
+    case 2:
+        {
+            GamePlayAI();
+            break;
+        }
+
+    }
+
 
     return 0;
     
