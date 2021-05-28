@@ -1,7 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>    
-#include <time.h>       
+#include <time.h>
+#include <conio.h>
 using namespace std;
 
 
@@ -177,7 +178,10 @@ void GamePlayAI()
         cin >> slot;
         if(currentPlayer == 2)
         {
+            
            slot = rand() % 9 + 1;
+            cin.ignore();
+            
         }
         
 
@@ -238,6 +242,8 @@ int main(int argc, char* argv[])
             GamePlay();
 
             break;
+
+           
         }
     
     case 2:
