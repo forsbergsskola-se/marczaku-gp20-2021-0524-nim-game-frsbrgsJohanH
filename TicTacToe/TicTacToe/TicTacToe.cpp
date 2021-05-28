@@ -74,6 +74,19 @@ int CheckWinner()
     }
 }
 
+void Multiplayer()
+{
+    if(currentMarker == 'X')
+        currentMarker = 'O';
+    else
+        currentMarker = 'X';
+
+    if(currentPlayer == 1)
+        currentPlayer = 2;
+    else
+        currentPlayer = 1;
+}
+
 void GamePlay()
 {
     char playerMarker;
@@ -83,14 +96,22 @@ void GamePlay()
     cin >> playerMarker;
     currentMarker = playerMarker;
 
+    DisplayBoard();
+
     for (int i = 0; i < 9; i++)
     {
-        DisplayBoard();
+        
         cout <<  "It Is player " << currentPlayer <<"s turn. Enter a slot: ";
         int slot;
         cin >> slot;
-
+        
         PlaceMarker(slot);
+
+        Multiplayer();
+        
+        DisplayBoard();
+
+        
 
         
     }
