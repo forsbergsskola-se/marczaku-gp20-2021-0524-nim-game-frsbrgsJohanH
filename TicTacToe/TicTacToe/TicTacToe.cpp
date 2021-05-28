@@ -1,5 +1,7 @@
 #include <iostream>
-#include <stdio.h> 
+#include <stdio.h>
+#include <stdlib.h>    
+#include <time.h>       
 using namespace std;
 
 
@@ -151,13 +153,84 @@ void GamePlay()
             
     }
 
+int aiPlayer()
+{
+    int computerChoice = rand() % 9 + 1;
+        cout << computerChoice << " ";
+
+    return computerChoice;
+}
+
+
+void GamePlayAI()
+{
+    char playerMarker;
+    int playerWin;
+    
+    cout << "Player 1. Choose your Marker: X or O :) : ";
+    currentPlayer = 1;
+    cin >> playerMarker;
+    currentMarker = playerMarker;
+
+    DisplayBoard();
+
+    for (int i = 0; i < 9; i++)
+    {
+        cout <<  "It Is player " << currentPlayer <<"s turn. Enter a slot: ";
+        int slot;
+        cin >> slot;
+
+        if(slot < 1 || slot > 9)
+        {
+            cout << "Please choose a slot from 1-9" << endl;
+            i--;
+            continue;
+        }
+        
+        if(!PlaceMarker(slot))
+        {
+            cout << "This slot already has a marker! Choose Another slot!." << endl;
+            i--;
+            continue;
+        }
+        
+        
+        DisplayBoard();
+
+        playerWin = CheckWinner();
+
+        if(playerWin == 1)
+        {
+            cout << "Player 1 wins!";
+            break;
+        }
+            
+        if(playerWin == 2)
+        {
+            cout << "Computer wins!";
+            break;
+        }
+
+        PlayerSwap();
+    }   
+    if (playerWin == 0)
+    {
+        cout << "Game was a tie!";
+    }
+            
+}
+
 
 int main(int argc, char* argv[])
 {
 
-  
-
-    GamePlay();
+    
+    for(int i = 0; i < 100; i++)
+    {
+        aiPlayer();
+    }
+     
+        
     
    
 
